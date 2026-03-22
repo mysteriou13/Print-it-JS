@@ -28,7 +28,7 @@ nbimage++
   }else{
 	
      if(nbimage == 0){
-       nbimage=3
+       nbimage=4
 	 }
 
 	 nbimage--;
