@@ -19,29 +19,55 @@ const slides = [
 
 let nbimage = 0;
 
+/*create list dot*/
+function createDots() {
+    let listdot = document.getElementById("dots");
+    for (let a = 0; a < slides.length; a++) {
+        let newDiv = document.createElement("div");
+        newDiv.id = "dot"+a;
+        newDiv.classList.add("dot");
+        listdot.appendChild(newDiv);
+    }
+	document.getElementById("dot0").classList.add("dot_selected");
+}
+
+/*update css dots scrollling carousel*/
+function selectDot(id) {
+    for (let a = 0; a < slides.length; a++) {
+        let dotelement = document.getElementById("dot"+a);
+        if (a == id) {
+            dotelement.classList.add("dot_selected");
+            
+        } else {
+            dotelement.classList.remove("dot_selected"); 
+    }
+}
+}
+/*scrolling carrousel*/
 function showSlide(direction) {
-   
-	console.log(slides.length);
 
-  if(direction == "right"){
-nbimage++
-  }else{
-	
-     if(nbimage == 0){
-       nbimage=4
+     switch(direction){
+		case "right":
+			nbimage++;
+          break;
+
+		  case 'left':
+		  if(nbimage == 0){
+           nbimage = 4;
+		  }
+		  nbimage--;
+		  break;
 	 }
-
-	 nbimage--;
-  }
 
     if(nbimage == slides.length){
     nbimage = 0
-	}
-	console.log(nbimage);
+	}	
 
-	let slideimage  = "/assets/images/slideshow/"+slides[nbimage].image
-   
+	let slideimage  = "./assets/images/slideshow/"+slides[nbimage].image
 	 document.getElementById("imgslide").src=slideimage
 	 
+ selectDot(nbimage)
 
 }
+
+createDots()
