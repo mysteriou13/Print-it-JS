@@ -62,9 +62,17 @@ function showSlide(direction) {
   }
 
   let slideimage = "./assets/images/slideshow/" + slides[nbImage].image;
-  document.querySelector("imgslide").src = slideimage;
+  document.querySelector("#imgslide").src = slideimage;
 
   selectDot(nbImage);
 }
+
+document.querySelector(".arrow_left").addEventListener("click",function(){
+  showSlide("left")
+})
+
+document.querySelector(".arrow_right").addEventListener("click",function(){
+  showSlide("right")
+})
 
 createDots();
